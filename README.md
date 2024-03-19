@@ -2,34 +2,52 @@
 BusyToddlerMum
 
 ## Overview
+The BusyToddlerMum app aims to assist super busy moms in delivering nutritious food to their babies. It provides a convenient solution for managing baby feeding schedules, meal planning, and nutritional information.
 
-What is your app? Brief description in a couple of sentences.
+
 
 ### Problem
 
-Why is your app needed? Background information around any pain points or other reasons.
+Pain Points: Super busy moms often struggle to find time to prepare and deliver nutritious meals to their toddlers.
+Nutritional Concerns: Ensuring that toddlers receive balanced and healthy meals is crucial for their growth and development.
+Time Constraints: Juggling work, household chores, and parenting leaves little time for meal planning and preparation.
 
 ### User Profile
 
-Who will use your app? How will they use it? Any special considerations that your app must take into account.
+Super Busy Moms: Moms with hectic schedules who need assistance in managing their toddlers’ meals.
+Toddlers: The ultimate beneficiaries of the app, as it ensures they receive nutritious food.
+Any child care giver who cares about providing nutritious meals for the welfare of their child will be
 
 ### Features
 
 List the functionality that your app will include. These can be written as user stories or descriptions with related details. Do not describe _how_ these features are implemented, only _what_ needs to be implemented.
 
+Meal Planning: Moms can create weekly meal plans, considering their toddlers’ preferences and nutritional needs.
+Delivery Scheduling: Moms can schedule meal deliveries based on their availability.
+Nutritional Insights: The app provides information on essential nutrients and age-appropriate foods.
+
+will use ai to produce possible meal types and combo based on dietary requirements, allergens and ingredients available
 ## Implementation
 
 ### Tech Stack
 
-List technologies that will be used in your app, including any libraries to save time or provide more functionality. Be sure to research any potential limitations.
+Frontend: React.js
+Backend: Node.js with Express
+Database: MySQL
+
 
 ### APIs
 
-List any external sources of data that will be used in your app.
+Nutrition Api
+Spoonacular
 
 ### Sitemap
 
-List the pages of your app with brief descriptions. You can show this visually, or write it out.
+Home: Overview and login
+Meal Planner: Create and manage meal plans
+Delivery Scheduler: Set delivery preferences
+Favorites: Saved recipes
+Profile: User settings
 
 ### Mockups
 
@@ -41,7 +59,9 @@ Describe your data and the relationships between them. You can show this visuall
 
 ### Endpoints
 
-List endpoints that your server will implement, including HTTP methods, parameters, and example responses.
+/api/meal-plans: GET, POST, PUT
+/api/delivery-schedule: GET, POST
+/api/user-profile: GET, PUT
 
 ### Auth
 
@@ -53,4 +73,6 @@ Scope your project as a sprint. Break down the tasks that will need to be comple
 
 ## Nice-to-haves
 
-Your project will be marked based on what you committed to in the above document. Under nice-to-haves, you can list any additional features you may complete if you have extra time, or after finishing.
+Authentication
+Geolocation
+
