@@ -1,38 +1,36 @@
 @use "../../styles/partials/colors" as *;
 @use "../../styles//partials/mixins" as *;
 
-/* Header.css */
-.header {
+/* Navbar.css */
+.navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
-  background-color: #f0f0f0;
+  background-color: $tertiary;
+  padding: 1rem;
 }
 
-.left-section {
+.nav-left .nav-icon img {
+  width: 50px;
+  /* Adjust size as needed */
+}
+
+.nav-right {
   display: flex;
   align-items: center;
-}
-
-.right-section ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  align-items: center;
-}
-
-.right-section li {
-  margin-left: 20px;
 }
 
 .dropdown {
   position: relative;
-  /* Descriptive comment */
 }
 
-.dropdown-title {
+.dropbtn {
+  background-color: #4CAF50;
+  /* Button color */
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
   cursor: pointer;
 }
 
@@ -53,9 +51,19 @@
 }
 
 .dropdown-content a:hover {
-  background-color: #f1f1f1;
+  background-color: #f1f1f1
 }
 
 .dropdown:hover .dropdown-content {
   display: block;
+}
+
+.nav-link {
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  text-decoration: none;
+  background-color: #4CAF50;
+  /* Adjust color as needed */
+  margin-left: 10px;
 }

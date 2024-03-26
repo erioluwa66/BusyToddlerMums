@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import Header from "./components/Header/Header";
 
 function App() {
@@ -6,9 +6,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Header />
-        <Routes>
-         
-        </Routes>
+     
       </BrowserRouter>
     </div>
   );

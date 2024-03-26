@@ -1,48 +1,47 @@
-import "./Header.scss";
-import { Link, useLocation } from "react-router-dom";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import "./Header.scss"; // Make sure to create a corresponding CSS file
 
-
-function Header() {
-  const location = useLocation();
-
-  const isRecipesPage= location.pathname.startsWith("/Recipes");
-  const isMealPlanPage = location.pathname.startsWith("/Meal-plan");
-  const isRootPath = location.pathname === "/";
+const Header = () => {
+  const [dropdown, setDropdown] = useState(false);
 
   return (
-    <header className="header">
-      <div className="header__content-main-wrap">
-        <Link to="/" className="header-logo-link">
-          <img className="header__logo" src={instockLogo} alt="instock-logo" />
+    <nav className="navbar">
+      <div className="nav-left">
+        <Link to="/" className="nav-icon">
+          {/* Your icon image goes here */}
+          <img src="path-to-your-icon.png" alt="App Icon" />
         </Link>
-        <nav className="header__nav">
-          <ul className="header-list">
-            <li className="header-list__item">
-              <Link
-                to="/recipes"
-                className={`header-list__link ${
-                  isRecipesPage || isRootPath
-                    ? "header-list__link--active"
-                    : ""
-                }`}
-              >
-                Recipes
-              </Link>
-            </li>
-            <li className="header-list__item">
-              <Link
-                to="/meal-plan"
-                className={`header-list__link ${
-                  isMealPlanPage ? "header-list__link--active" : ""
-                }`}
-              >
-                Meal-plan
-              </Link>
-            </li>
-          </ul>
-        </nav>
       </div>
-    </header>
+      <div className="nav-right">
+        <div className="dropdown">
+          <button
+            className="dropbtn"
+            onMouseEnter={() => setDropdown(true)}
+            onMouseLeave={() => setDropdown(false)}
+          >
+            Recipes
+          </button>
+          {dropdown && (
+            <div
+              className="dropdown-content"
+              onMouseEnter={() => setDropdown(true)}
+              onMouseLeave={() => setDropdown(false)}
+            >
+              <Link to="/recipes/breakfast">Breakfast</Link>
+              <Link to="/recipes/dinner">Dinner</Link>
+              <Link to="/recipes/lunch">Lunch</Link>
+              <Link to="/recipes/smoothies">Smoothies</Link>
+              <Link to="/recipes/snacks">Snacks</Link>
+            </div>
+          )}
+        </div>
+        <Link to="/meal-plan" className="nav-link">
+          Meal Plan
+        </Link>
+      </div>
+    </nav>
   );
-}
+};
+
 export default Header;
