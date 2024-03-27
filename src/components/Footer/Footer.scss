@@ -37,13 +37,14 @@
     }
 
     &__bottom {
+    @include tablet {
       display: flex;
       justify-content: space-between;
       margin-top: 3rem; 
       border-top: .0625rem solid $mercury; 
       padding-top: 2rem;
     }
-
+}
     &__social {
        display: flex;
        &--icon {
