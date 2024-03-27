@@ -3,6 +3,7 @@ import Header from "./components/Header/Header";
 import Home from "./pages/Home/Home.jsx";
 import MealPlan from "./pages/MealPlan/MealPlan.jsx";
 import Recipes from "./pages/Recipes/Recipes.jsx";
+import Footer from "./components/Footer/Footer.jsx";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/meal-plan" component={MealPlan} />
           <Route path="/recipes" component={Recipes} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </div>
   );

@@ -17,7 +17,7 @@ function Header() {
           <img
             className="header__logo"
             src={busytoddlermumlogo}
-            alt="instock-logo"
+            alt="busytoddlermum-logo"
           />
         </Link>
         <nav className="header__nav">
