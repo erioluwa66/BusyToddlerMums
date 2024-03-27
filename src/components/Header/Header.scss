@@ -1,69 +1,106 @@
 @use "../../styles/partials/colors" as *;
 @use "../../styles//partials/mixins" as *;
 
-/* Navbar.css */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: $tertiary;
-  padding: 1rem;
-}
+.header {
+  background-color: $white;
 
-.nav-left .nav-icon img {
-  width: 50px;
-  /* Adjust size as needed */
-}
+  &__content-main-wrap {
+    max-width: 63rem;
+    height: 10.125rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
 
-.nav-right {
-  display: flex;
-  align-items: center;
-}
+    @include tablet {
+      width: 90%;
+      height: 11.625rem;
+      flex-direction: row;
+    }
+  }
 
-.dropdown {
-  position: relative;
-}
+  .header-logo-link {
+    display: block;
+    margin: 0 auto;
+    height: 1rem;
+    padding: 1.5rem 0;
+    width: 7.19rem;
 
-.dropbtn {
-  background-color: #4CAF50;
-  /* Button color */
-  color: white;
-  padding: 10px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-}
+    @include tablet {
+      margin: 0 1.47rem 0 0;
+      padding: 1.8rem 0;
+    }
 
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-}
+   
+  }
 
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
+  &__logo {
+    width: 7.6rem;
+    height: 1.35rem;
 
-.dropdown-content a:hover {
-  background-color: #f1f1f1
-}
+    @include tablet {
+      width: 8.0625rem;
+      height: 1.875rem;
+    }
+  }
 
-.dropdown:hover .dropdown-content {
-  display: block;
-}
+  &__nav {
+    min-width: 15rem;
+    height: 3rem;
 
-.nav-link {
-  color: white;
-  padding: 10px;
-  font-size: 16px;
-  text-decoration: none;
-  background-color: #4CAF50;
-  /* Adjust color as needed */
-  margin-left: 10px;
+    @include tablet {
+      min-width: 0;
+      height: 4.18rem;
+      line-height: 4.18rem;
+    }
+  }
+
+  .header-list {
+    @include flex-start;
+    margin-top: -0.1rem;
+    list-style-type: none;
+    
+
+    &__item {
+      width: 50%;
+      text-align: center;
+      height: 1.75rem;
+      line-height: 1.75rem;
+
+      @include tablet {
+        width: auto;
+        height: 2.1875rem;
+        line-height: 2.1875rem;
+      }
+    }
+
+    &__link {
+      font-size: 0.6875rem;
+      display: block;
+      color: $black;
+      width: 80%;
+      height: 1.75rem;
+      margin: 1rem auto;
+      border-radius: 1.25rem;
+
+      @include tablet {
+        font-size: 0.8125rem;
+        margin: 1.8rem 0 0 0;
+        width: auto;
+        padding: 0 0.9375rem;
+        height: 2.1875rem;
+      }
+
+      &--active {
+        color: $white;
+        background-color: $black;
+      }
+
+      &:hover {
+        color: $white;
+        text-decoration: underline $lightgrey;
+      }
+    }
+        
+        
+  }
 }

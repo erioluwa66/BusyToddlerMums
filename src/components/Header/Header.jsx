@@ -1,47 +1,61 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import "./Header.scss";
+import busytoddlermumlogo from "../../assets/logos/YummytoddlerMum.svg";
+import { Link, useLocation } from "react-router-dom";
 
 function Header() {
-  const [dropdown, setDropdown] = useState(false);
+  const location = useLocation();
+
+  const isRecipesPage = location.pathname.startsWith("/Recipes");
+  const isMealPlanPage = location.pathname.startsWith("/Meal-plan");
+  const isHomePage = location.pathname.startsWith("/Meal-plan");
+  const isRootPath = location.pathname === "/";
 
   return (
-    <nav className="navbar">
-      <div className="nav-left">
-        <Link to="/" className="nav-icon">
-          {/* Your icon image goes here */}
-          <img src="path-to-your-icon.png" alt="App Icon" />
+    <header className="header">
+      <div className="header__content-main-wrap">
+        <Link to="/" className="header-logo-link">
+          <img
+            className="header__logo"
+            src={busytoddlermumlogo}
+            alt="instock-logo"
+          />
         </Link>
+        <nav className="header__nav">
+          <ul className="header-list">
+            <li className="header-list__item">
+              <Link
+                to="/"
+                className={`header-list__link ${
+                  isHomePage || isRootPath ? "header-list__link--active" : ""
+                }`}
+              >
+                Home
+              </Link>
+            </li>
+            <li className="header-list__item">
+              <Link
+                to="/recipes"
+                className={`header-list__link ${
+                  isRecipesPage ? "header-list__link--active" : ""
+                }`}
+              >
+                Recipes
+              </Link>
+            </li>
+            <li className="header-list__item">
+              <Link
+                to="/meal-plan"
+                className={`header-list__link ${
+                  isMealPlanPage ? "header-list__link--active" : ""
+                }`}
+              >
+                Meal-plan
+              </Link>
+            </li>
+          </ul>
+        </nav>
       </div>
-      <div className="nav-right">
-        <div className="dropdown">
-          <button
-            className="dropbtn"
-            onMouseEnter={() => setDropdown(true)}
-            onMouseLeave={() => setDropdown(false)}
-          >
-            Recipes
-          </button>
-          {dropdown && (
-            <div
-              className="dropdown-content"
-              onMouseEnter={() => setDropdown(true)}
-              onMouseLeave={() => setDropdown(false)}
-            >
-              <Link to="/recipes/breakfast">Breakfast</Link>
-              <Link to="/recipes/dinner">Dinner</Link>
-              <Link to="/recipes/lunch">Lunch</Link>
-              <Link to="/recipes/smoothies">Smoothies</Link>
-              <Link to="/recipes/snacks">Snacks</Link>
-            </div>
-          )}
-        </div>
-        <Link to="/meal-plan" className="nav-link">
-          Meal Plan
-        </Link>
-      </div>
-    </nav>
+    </header>
   );
 }
-
 export default Header;
