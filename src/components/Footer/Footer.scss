@@ -1,0 +1,68 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles//partials/mixins" as *;
+@use "../../styles//partials/global" as *;
+@use "../../styles//partials/fonts" as *;
+
+.footer {
+    background-color: $white;
+    
+    @include tablet {
+        margin-left: 3rem;
+    }
+
+    &__icon {
+        width: 1.5rem;
+        height: 1.5rem;
+        padding: .125rem;
+        margin-right: 1.25rem;
+        position: relative;
+        top: 1.25rem;
+        color: black;
+
+        @include tablet {
+            margin: 0 1.47rem 0 0;
+            padding: 1.8rem 0;
+        }
+
+    }
+    &__logo {
+        width: 7.6rem;
+        height: 7.35rem;
+       
+
+        @include tablet {
+            width: 8.0625rem;
+            height: 8.875rem;
+        }
+    }
+
+    &__bottom {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 3rem; 
+      border-top: .0625rem solid $mercury; 
+      padding-top: 2rem;
+    }
+
+    &__social {
+       display: flex;
+       &--icon {
+        width: 1.5rem;
+        height: 1.5rem;
+        padding-right: 0.5rem;
+       }
+
+     }
+
+    &__text {
+        width: 80%;
+        margin-top: -2rem;
+        
+
+        @include tablet {
+            width: 50%;
+        }
+    }
+
+    
+}
