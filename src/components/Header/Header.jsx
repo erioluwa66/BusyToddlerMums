@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "./Header.scss"; // Make sure to create a corresponding CSS file
+import "./Header.scss";
 
-const Header = () => {
+function Header() {
   const [dropdown, setDropdown] = useState(false);
 
   return (
@@ -42,6 +42,6 @@ const Header = () => {
       </div>
     </nav>
   );
-};
+}
 
 export default Header;
