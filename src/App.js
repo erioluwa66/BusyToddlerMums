@@ -11,9 +11,9 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route path="/" exact component={Home} />
-          <Route path="/meal-plan" component={MealPlan} />
-          <Route path="/recipes" component={Recipes} />
+          <Route path="/" element={<Home />} />
+          <Route path="/meal-plan" element={<MealPlan />} />
+          <Route path="/recipes" element={<Recipes />} />
         </Routes>
         <Footer />
       </BrowserRouter>
