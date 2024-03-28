@@ -1,5 +1,5 @@
 import './Recipes.scss';
-import RecipeList from "../../components/RecipeList";
+import RecipeList from "../../components/RecipeList/RecipeList";
 
 function Recipes() {
   return (

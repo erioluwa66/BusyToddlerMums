@@ -1,8 +1,8 @@
 // components/RecipeList.js
-
-import React, { useEffect, useState } from "react";
-import axios from "axios";
 import "./RecipeList.scss"; // Import CSS file for styling
+import { useEffect, useState } from "react";
+import axios from "axios";
+
 
 function RecipeList() {
   const [recipes, setRecipes] = useState([]);
@@ -10,7 +10,7 @@ function RecipeList() {
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
-        const response = await axios.get("/api/recipes"); // Assuming your backend server is running on the same host
+        const response = await axios.get("http://localhost:5050/api/recipes"); // Assuming your backend server is running on the same host
         setRecipes(response.data);
       } catch (error) {
         console.error("Error fetching recipes:", error);
