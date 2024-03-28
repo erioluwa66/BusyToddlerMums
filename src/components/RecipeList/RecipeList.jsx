@@ -1,11 +1,13 @@
 // components/RecipeList.js
 import "./RecipeList.scss"; // Import CSS file for styling
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 
 function RecipeList() {
   const [recipes, setRecipes] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchRecipes = async () => {
@@ -19,10 +21,15 @@ function RecipeList() {
     fetchRecipes();
   }, []);
 
+  //Function to handle click event on recipe card
+  const handleRecipeClick = (id) => {
+    navigate(`/recipes/${id}`); // Navigate to the recipe details
+  };
+
   return (
     <div className="recipe-list">
       {recipes.map((recipe) => (
-        <div className="recipe-card" key={recipe.id}>
+        <div className="recipe-card" key={recipe.id} onClick={() => handleRecipeClick(recipe.id)}>
           <img src={recipe.image} alt={recipe.recipe_name} />
           <h3>{recipe.recipe_name}</h3>
           <p>{recipe.description}</p>

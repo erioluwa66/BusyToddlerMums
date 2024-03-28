@@ -1,32 +1,39 @@
 // components/RecipeDetails.js
 import "./RecipeDetails.scss"
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 
-const RecipeDetails = ({ match }) => {
+function RecipeDetails() {
+  const params = useParams();
   const [recipe, setRecipe] = useState(null);
-  const { id } = match.params;
+  const [loading, setLoading] = useState(true);
+  const baseUrl = "http://localhost:5050";
 
   useEffect(() => {
-    const fetchRecipe = async () => {
+    const fetchRecipebyId = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5050/api/recipes/${id}`
+          `${baseUrl}/api/recipes/${Number(params.id)}`
         );
+        document.title = `${response.data.recipe_name} | busytoddlermum`;
         setRecipe(response.data);
+        setLoading(false);
       } catch (error) {
-        console.error("Error fetching recipe:", error);
+        setLoading(false);
+        console.error(`error: ${error}`);
       }
     };
-    fetchRecipe();
-  }, [id]);
 
-  if (!recipe) {
+    fetchRecipebyId();
+  }, [params.id]);
+
+  if (loading) {
     return <p>Loading...</p>;
   }
-
   return (
-    <div>
+    <div className="recipe-details">
+      <img src={recipe.image} alt={recipe.recipe_name} />
       <h2>{recipe.recipe_name}</h2>
       <p>Description: {recipe.description}</p>
       <p>Author: {recipe.author}</p>
@@ -36,7 +43,7 @@ const RecipeDetails = ({ match }) => {
       <ul>
         {recipe.ingredients.map((ingredient, index) => (
           <li key={index}>
-            {ingredient.name} - {ingredient.quantity}
+            {ingredient.ingredient} - {ingredient.quantity}
           </li>
         ))}
       </ul>
@@ -45,7 +52,14 @@ const RecipeDetails = ({ match }) => {
       <h3>Notes:</h3>
       <p>{recipe.notes}</p>
       <h3>Nutrition:</h3>
-      <p>{recipe.nutrition}</p>
+      <p>
+        Nutrition:{" "}
+        {Object.entries(recipe.nutrition).map(([key, value]) => (
+          <span key={key}>
+            {key}: {value}&nbsp;
+          </span>
+        ))}
+      </p>
     </div>
   );
 };
