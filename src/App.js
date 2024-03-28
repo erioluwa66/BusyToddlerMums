@@ -4,6 +4,7 @@ import Home from "./pages/Home/Home.jsx";
 import MealPlan from "./pages/MealPlan/MealPlan.jsx";
 import Recipes from "./pages/Recipes/Recipes.jsx";
 import Footer from "./components/Footer/Footer.jsx";
+import RecipeDetails from "./components/RecipeDetails/RecipeDetails.jsx";
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/meal-plan" element={<MealPlan />} />
           <Route path="/recipes" element={<Recipes />} />
-          {/* <Route path="/recipes/:id" element={<RecipesPage />} /> */}
+           <Route path="/recipes/:id" element={<RecipeDetails />} /> 
         </Routes>
         <Footer />
       </BrowserRouter>
