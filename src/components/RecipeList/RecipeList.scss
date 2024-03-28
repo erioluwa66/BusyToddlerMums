@@ -1,0 +1,29 @@
+/* styles/RecipeList.css */
+
+.recipe-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.recipe-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.recipe-card img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.recipe-card h3 {
+    font-size: 18px;
+    margin: 0;
+}
+
+.recipe-card p {
+    font-size: 14px;
+    color: #666;
+}

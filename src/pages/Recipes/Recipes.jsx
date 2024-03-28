@@ -1,14 +1,13 @@
-// pages/Recipes.jsx
-import React from "react";
-// import RecipeCategory from "../components/RecipeCategory";
+import './Recipes.scss';
+import RecipeList from "../../components/RecipeList";
 
-const Recipes = () => {
+function Recipes() {
   return (
     <div>
       <h1>Recipes</h1>
-      
+      <RecipeList />
     </div>
   );
-};
+}
 
 export default Recipes;
