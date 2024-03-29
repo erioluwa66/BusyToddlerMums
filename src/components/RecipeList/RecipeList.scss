@@ -1,29 +1,80 @@
-/* styles/RecipeList.css */
+@use "../../styles/partials/colors" as *;
+@use "../../styles//partials/mixins" as *;
+@use "../../styles//partials/global" as *;
+@use "../../styles//partials/fonts" as *;
 
+
+
+// Overall container that wraps the filters and recipe list for side-by-side layout
+.content-container {
+    display: flex;
+    flex-wrap: nowrap; // Prevent wrapping to ensure side-by-side layout
+    gap: 20px; // Space between filters and recipe list
+    padding: 20px;
+
+    @include tablet {
+        flex-wrap: nowrap;
+    }
+}
+
+// Styling for the filter section
+.filters {
+    flex-basis: 200px; // Fixed width for filters, adjust as needed
+    border-right: 1px solid #ccc; // Border line between filters and recipe list
+    padding-right: 20px;
+    box-sizing: border-box; // Include padding in the width calculation
+
+    h2 {
+        margin-top: 0;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+            display: flex;
+            align-items: center;
+            gap: 10px; // Space between checkbox and text
+            margin-bottom: 10px;
+            cursor: pointer;
+
+            input[type="checkbox"] {
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+// Styling for the recipe list, adapting to available space
 .recipe-list {
+    flex-grow: 1; // Take up remaining space
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); // Adjust column size as needed
     gap: 20px;
 }
 
+// Individual recipe card styling
 .recipe-card {
     border: 1px solid #ccc;
     border-radius: 8px;
-    padding: 20px;
-}
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 
-.recipe-card img {
-    width: 100%;
-    border-radius: 8px;
-    margin-bottom: 10px;
-}
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
 
-.recipe-card h3 {
-    font-size: 18px;
-    margin: 0;
-}
+    img {
+        width: 100%;
+        height: 200px; // Adjust based on your design
+        object-fit: cover;
+    }
 
-.recipe-card p {
-    font-size: 14px;
-    color: #666;
+    h3,
+    p {
+        padding: 10px;
+    }
 }
