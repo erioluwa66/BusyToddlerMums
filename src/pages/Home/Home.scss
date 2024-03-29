@@ -1,0 +1,35 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles//partials/mixins" as *;
+@use "../../styles//partials/global" as *;
+@use "../../styles//partials/fonts" as *;
+
+.hero {
+    background-color: $white;
+
+    &__top {
+        display: flex;
+        justify-content: space-around;
+
+        &--left {
+            margin-left: 3rem;
+        }
+    }
+
+    &__main-text {
+        
+        &--one {
+        color: $black;
+        } 
+        &--two {
+        color: $maintext;
+        }
+        &--sub {
+        font-size: small;
+        font-weight: 200;
+        color: $lightestgray;
+        @include tablet {
+            width: 70%;
+        }
+        }
+    }
+}

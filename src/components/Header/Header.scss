@@ -36,8 +36,8 @@
   }
 
   &__logo {
-    width: 7.6rem;
-    height: 1.35rem;
+    width: 6.6rem;
+    height: 2.35rem;
 
     @include tablet {
       width: 8.0625rem;
@@ -93,12 +93,12 @@
       }
 
       &--active {
-        color: $white;
-        background-color: $black;
+        color: $black;
+        
       }
 
       &:hover {
-        color: $white;
+        color: $lightgrey;
         text-decoration: underline $lightgrey;
       }
     }

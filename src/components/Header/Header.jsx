@@ -7,8 +7,8 @@ function Header() {
 
   const isRecipesPage = location.pathname.startsWith("/Recipes");
   const isMealPlanPage = location.pathname.startsWith("/Meal-plan");
-  const isHomePage = location.pathname.startsWith("/Meal-plan");
   const isRootPath = location.pathname === "/";
+  const isHomePage = isRootPath;
 
   return (
     <header className="header">
