@@ -5,6 +5,24 @@
 
 .hero {
     background-color: $white;
+    position: relative; 
+.hero__top,
+    .hero__bottom {
+        position: relative;
+        z-index: 2; // Ensures text content is above the background
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('../../assets/icons/BackgroundFrame.svg') no-repeat center center;
+        background-size: cover; // Adjust as needed to fit your design
+        z-index: 1; // Under the content
+    }
 
     &__top {
         display: flex;
@@ -76,4 +94,71 @@
         
     }
     
+}
+.hero__bottom {
+    text-align: center;
+
+    .text {
+        font-weight: bold;
+        color: $hero-bottom;
+    }
+
+    .popular-recipes-container {
+        display: flex;
+        justify-content: space-around; // This will space out the items equally
+        margin-top: 20px;
+    }
+
+    .popular-recipe-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 33%; 
+    }
+
+    .popular-recipe-avatar {
+        width: 2.25rem;
+        height: 2.25rem;
+        border-radius: 1.37rem; 
+        object-fit: cover; 
+        @include tablet {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 2.37rem;
+        }
+    }
+
+    .popular-recipe-info {
+        margin-top: 10px;
+        font-size: 0.7rem;
+        color: $hero-bottom;
+
+        .popular-recipe-name {
+            margin: 5px 0;
+        }
+    }
+    
+}
+
+.hero_icon {
+    position: absolute;
+    top: 50%; // Adjust positioning as needed
+    transform: translateY(-50%); // Centers vertically
+
+    &.pink {
+        left: 0;
+        transform: translateY(-50%) translateX(-50%); // Adjusts for size
+    }
+
+    &.blue {
+        right: 0;
+        transform: translateY(-50%) translateX(50%); // Adjusts for size
+    }
+}
+
+Adjust sizes for cupcakes and their positions
+.pinkcupcake,
+.bluecupcake {
+    width: 3.25rem; // Example size, adjust as needed
+    height: auto;
 }
