@@ -5,10 +5,9 @@
 
 
 
-// Overall container that wraps the filters and recipe list for side-by-side layout
 .content-container {
     display: flex;
-    flex-wrap: nowrap; // Prevent wrapping to ensure side-by-side layout
+    flex-wrap: wrap;
     gap: 20px; // Space between filters and recipe list
     padding: 20px;
 
@@ -17,64 +16,70 @@
     }
 }
 
-// Styling for the filter section
 .filters {
-    flex-basis: 200px; // Fixed width for filters, adjust as needed
-    border-right: 1px solid #ccc; // Border line between filters and recipe list
+    flex-basis: 100%; // Full width on smaller screens
+
+    @include tablet {
+        flex-basis: 200px; // Adjust to your desired width on larger screens
+    }
+
     padding-right: 20px;
-    box-sizing: border-box; // Include padding in the width calculation
+    margin-right: 20px;
+    border-right: 1px solid #ccc; // Visual separator between filters and recipes
 
     h2 {
-        margin-top: 0;
+        margin-bottom: 1rem; // Space below section headings
     }
 
     ul {
-        list-style: none;
+        list-style-type: none;
         padding: 0;
-        margin: 0;
 
         li {
+            margin-bottom: 0.5rem; // Space between filter items
             display: flex;
-            align-items: center;
-            gap: 10px; // Space between checkbox and text
-            margin-bottom: 10px;
-            cursor: pointer;
+            align-items: center; // Align checkboxes and labels vertically
+
+            label {
+                cursor: pointer;
+                display: flex;
+                align-items: center; // Ensures label text is aligned with the checkbox
+                width: 100%;
+            }
 
             input[type="checkbox"] {
-                cursor: pointer;
+                margin-right: 10px; // Space between checkbox and label text
             }
         }
     }
 }
 
-// Styling for the recipe list, adapting to available space
 .recipe-list {
-    flex-grow: 1; // Take up remaining space
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); // Adjust column size as needed
-    gap: 20px;
-}
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); // Responsive grid layout
+    gap: 20px; // Space between cards
+    width: 100%;
 
-// Individual recipe card styling
-.recipe-card {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    overflow: hidden;
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    .recipe-card {
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        overflow: hidden;
+        transition: transform 0.2s, box-shadow 0.2s;
 
-    &:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    }
+        &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
 
-    img {
-        width: 100%;
-        height: 200px; // Adjust based on your design
-        object-fit: cover;
-    }
+        img {
+            width: 100%;
+            height: 200px; // Adjust based on your needs
+            object-fit: cover;
+        }
 
-    h3,
-    p {
-        padding: 10px;
+        h3,
+        p {
+            padding: 10px;
+        }
     }
 }

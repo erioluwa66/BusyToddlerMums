@@ -50,49 +50,46 @@ function RecipeList() {
     navigate(`/recipes/${id}`);
   };
   // Handler for course checkbox change
-  const handleCuisineChange = (course) => {
-    setSelectedCuisine(course === selectedCourse ? '' : course);
+  const handleCuisineChange = (e, cuisine) => {
+    setSelectedCuisine(cuisine === selectedCuisine ? "" : cuisine);
   };
 
-  //handler for cuisine checkbox change
-  const handleCourseChange = (course) => {
-    setSelectedCourse(course === selectedCourse ? '' : course);
-  }
-
+  const handleCourseChange = (e, course) => {
+    setSelectedCourse(course === selectedCourse ? "" : course);
+  };
+  
   return (
     <div className="content-container">
       <div className="filters">
+        {/* Courses */}
         <h2>Courses</h2>
         <ul>
           {courses.map((course, index) => (
-            <li
-              key={index}
-              onClick={() =>
-                handleCourseChange(course)}>
-              <input 
-              type="checkbox"
-              checked={selectedCourse === course}
-              onChange={() => {}}
-              onClick={(e) => e.stopPropagation()} // Prevent li from triggering when li is clicked 
-              /> 
-              {course}
+            <li key={index}>
+              <label>
+                <input
+                  type="checkbox"
+                  checked={selectedCourse === course}
+                  onChange={(e) => handleCourseChange(e, course)}
+                />
+                <span>{course}</span>
+              </label>
             </li>
           ))}
         </ul>
+        {/* Cuisines */}
         <h2>Cuisines</h2>
         <ul>
           {cuisines.map((cuisine, index) => (
-            <li
-              key={index}
-              onClick={() =>
-                handleCuisineChange(cuisine)}>
-                  <input 
+            <li key={index}>
+              <label>
+                <input
                   type="checkbox"
                   checked={selectedCuisine === cuisine}
-                  onChange={() => {}}
-                  onClick={(e) => e.stopPropagation()}
-                  />
-              {cuisine}
+                  onChange={(e) => handleCuisineChange(e, cuisine)}
+                />
+                <span>{cuisine}</span>
+              </label>
             </li>
           ))}
         </ul>
