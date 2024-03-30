@@ -1,43 +1,77 @@
-/* MealPlan.css */
+@use "../../styles/partials/colors" as *;
+@use "../../styles//partials/mixins" as *;
+@use "../../styles//partials/global" as *;
+@use "../../styles//partials/fonts" as *;
+
 .meal-plan-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
     padding: 20px;
 }
 
-input {
-    width: 100%;
-    max-width: 500px;
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
+.meal-plan-card {
+    background-color: #f0f0f0; // default color
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 
-// button {
-//     padding: 10px 15px;
-//     margin-right: 10px;
-//     border: none;
-//     border-radius: 5px;
-//     background-color: #007bff;
-//     color: white;
-//     cursor: pointer;
-//     transition: background-color 0.3s;
-// }
+    h2 {
+        margin-top: 0;
+        background-color: #f9c1b1; // Default color for headers
+        color: #fff;
+        padding: 10px;
+        border-radius: 10px 10px 0 0;
+    }
 
-// button:hover {
-//     background-color: #0056b3;
-// }
+    p {
+        background-color: #fff;
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 5px;
+    }
 
-.meal-plans {
-    margin-top: 20px;
-}
+    &.monday {
+        h2 {
+            background-color: #f9c1b1;
+        }
+    }
 
-.meal-plan {
-    background-color: #f8f9fa;
-    border: 1px solid #ddd;
-    padding: 15px;
-    margin-top: 10px;
-    border-radius: 5px;
+    &.tuesday {
+        h2 {
+            background-color: #f3d250;
+        }
+    }
+
+    &.wednesday {
+        h2 {
+            background-color: #88d498;
+        }
+    }
+
+    &.thursday {
+        h2 {
+            background-color: #8ad7f1;
+        }
+    }
+
+    &.friday {
+        h2 {
+            background-color: #c084f5;
+        }
+    }
+
+    &.saturday {
+        h2 {
+            background-color: #ff847c;
+        }
+    }
+
+    &.sunday {
+        h2 {
+            background-color: #e84a5f;
+        }
+    }
+
+ 
 }

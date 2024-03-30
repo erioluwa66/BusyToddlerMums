@@ -1,41 +1,45 @@
-
-// MealPlan.js
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import "./MealPlan.scss"; // Your CSS file for styling
+import "./MealPlan.scss"; // Ensure this is the correct path
 
 const MealPlan = () => {
-  const [ingredients, setIngredients] = useState("");
   const [mealPlans, setMealPlans] = useState([]);
 
   const handleGenerateMealPlan = async () => {
     try {
-      const response = await axios.post(
-        "http://localhost:5050/api/meal-plan",
-        { ingredients: ingredients.split(",").map((item) => item.trim()) } // Split the string into an array
-      );
-      setMealPlans([...mealPlans, response.data]);
-      setIngredients("");
+      const response = await axios.get("http://localhost:5050/api/meal-plan"); // Use the actual endpoint
+      // Transform the object into an array of objects for each day of the week
+      const plans = Object.keys(response.data).map((day) => ({
+        day: day,
+        ...response.data[day],
+      }));
+      setMealPlans(plans);
     } catch (error) {
       console.error(error);
     }
   };
+
+  // Assume this effect is used to fetch the meal plan on component mount
+  useEffect(() => {
+    handleGenerateMealPlan();
+  }, []);
+
   return (
     <div className="meal-plan-container">
-      <input
-        type="text"
-        value={ingredients}
-        onChange={(e) => setIngredients(e.target.value)}
-        placeholder="Enter ingredients separated by commas"
-      />
-      <button onClick={handleGenerateMealPlan}>Generate Meal Plan</button>
-      <div className="meal-plans">
-        {mealPlans.map((plan, index) => (
-          <div key={index} className="meal-plan">
-            <p>{plan.message}</p>
-          </div>
-        ))}
-      </div>
+      {mealPlans.map((plan, index) => (
+        <div key={index} className={`meal-plan-card ${plan.day.toLowerCase()}`}>
+          <h2>{plan.day}</h2>
+          <p>
+            <strong>Breakfast:</strong> {plan.breakfast}
+          </p>
+          <p>
+            <strong>Lunch:</strong> {plan.lunch}
+          </p>
+          <p>
+            <strong>Dinner:</strong> {plan.dinner}
+          </p>
+        </div>
+      ))}
     </div>
   );
 };
