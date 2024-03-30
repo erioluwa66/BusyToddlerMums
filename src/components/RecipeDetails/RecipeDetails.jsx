@@ -2,12 +2,14 @@
 import "./RecipeDetails.scss"
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { convertToFraction, scaleQuantity } from '../../Utils/Utils' // Assume you have
 import axios from "axios";
 
 function RecipeDetails() {
   const params = useParams();
   const [recipe, setRecipe] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [scale, setScale] = useState(1); // The scale factor
   const baseUrl = "http://localhost:5050";
 
   useEffect(() => {
@@ -28,6 +30,11 @@ function RecipeDetails() {
     fetchRecipebyId();
   }, [params.id]);
 
+  
+  const scaleRecipe = (factor) => {
+    setScale(factor);
+  };
+
   if (loading) {
     return <p>Loading...</p>;
   }
@@ -39,11 +46,32 @@ function RecipeDetails() {
       <p>Author: {recipe.author}</p>
       <p>Cuisine: {recipe.cuisine}</p>
       <p>Servings: {recipe.servings}</p>
+      <div className="scale-buttons">
+        <button
+          onClick={() => scaleRecipe(1)}
+          className={scale === 1 ? "active" : ""}
+        >
+          1x
+        </button>
+        <button
+          onClick={() => scaleRecipe(1.5)}
+          className={scale === 1.5 ? "active" : ""}
+        >
+          2x
+        </button>
+        <button
+          onClick={() => scaleRecipe(3)}
+          className={scale === 3 ? "active" : ""}
+        >
+          3x
+        </button>
+      </div>
       <h3>Ingredients:</h3>
       <ul>
         {recipe.ingredients.map((ingredient, index) => (
           <li key={index}>
-            {ingredient.ingredient} - {ingredient.quantity}
+            {convertToFraction(scaleQuantity(ingredient.quantity, scale))}{" "}
+            {ingredient.ingredient}
           </li>
         ))}
       </ul>
