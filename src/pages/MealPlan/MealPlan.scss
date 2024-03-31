@@ -36,7 +36,7 @@
         padding: 10px 20px;
         border: none;
         border-radius: 4px;
-        background-color: #007bff; // Bootstrap primary blue
+        background-color: $maintext; // Bootstrap primary blue
         color: white;
         cursor: pointer;
         font-size: 1rem;
@@ -66,41 +66,13 @@
 }
 
 .meal-plan-card h2 {
-    color: pink; // White text for the day title
+    color: $maintext; // White text for the day title
     padding: 10px;
     border-radius: 8px;
     font-size: 1.5rem; // Larger font size for day titles
     margin: -20px -20px 20px -20px; // Align the title with the card edges
 }
 
-/* Custom colors for day titles */
-.monday-card .day-title {
-    background-color: #ff6384;
-}
-
-.tuesday-card .day-title {
-    background-color: #36a2eb;
-}
-
-.wednesday h2 {
-    background-color: #ffcd56;
-}
-
-.thursday h2 {
-    background-color: #4bc0c0;
-}
-
-.friday h2 {
-    background-color: #9966ff;
-}
-
-.saturday h2 {
-    background-color: #c9cbcf;
-}
-
-.sunday h2 {
-    background-color: #ff9f40;
-}
 
 .meal-plan-card p {
     background-color: #fff; // White background for the meal text
