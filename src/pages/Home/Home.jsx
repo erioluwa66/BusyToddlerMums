@@ -15,7 +15,10 @@ function Home() {
     const fetchPopularRecipes = async () => {
       try {
         const response = await axios.get(`${baseUrl}/api/recipes`);
-        setPopularRecipes(response.data.slice(0, 3));
+        //shuffle the array
+        const shuffledRecipes = response.data.sort(() => 0.5 - Math.random());
+        //Get three random recipes from the shuffled array
+        setPopularRecipes(shuffledRecipes.slice(0, 3));
         setLoading(false);
       } catch (error) {
         console.error(`Error fetching popular recipes: ${error}`);
