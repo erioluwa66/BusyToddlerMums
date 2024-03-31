@@ -45,8 +45,11 @@ const MealPlan = () => {
       {error && <div className="error-message">{error}</div>}
       <div className="meal-plans-display">
         {mealPlans.map((plan, index) => (
-          <div key={index} className="meal-plan-card">
-            <h2>{plan.day}</h2>
+          <div
+            key={index}
+            className={`meal-plan-card ${plan.day.toLowerCase()}`}
+          >
+            <h2 className={`day-title ${plan.day.trim().toLowerCase()}-title`}>{plan.day}</h2>
             {plan.meals.map((meal, mealIndex) => (
               <p key={mealIndex}>{meal}</p>
             ))}
