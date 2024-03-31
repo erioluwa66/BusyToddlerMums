@@ -1,45 +1,58 @@
-import { useEffect, useState } from "react";
+// MealPlan.js
+import React, { useState } from "react";
 import axios from "axios";
-import "./MealPlan.scss"; // Ensure this is the correct path
+import "./MealPlan.scss"; // Ensure your SCSS file is updated accordingly
 
 const MealPlan = () => {
+  const [ingredients, setIngredients] = useState("");
   const [mealPlans, setMealPlans] = useState([]);
+  const [error, setError] = useState("");
 
   const handleGenerateMealPlan = async () => {
     try {
-      const response = await axios.get("http://localhost:5050/api/meal-plan"); // Use the actual endpoint
-      // Transform the object into an array of objects for each day of the week
-      const plans = Object.keys(response.data).map((day) => ({
-        day: day,
-        ...response.data[day],
-      }));
-      setMealPlans(plans);
-    } catch (error) {
-      console.error(error);
+      const response = await axios.post("http://localhost:5050/api/meal-plan", {
+        ingredients: ingredients.split(",").map((item) => item.trim()),
+      });
+
+      // Split the meal plan text by each day
+      const days = response.data.message.split("\n\n").filter(Boolean);
+      const formattedPlans = days.map((dayPlan) => {
+        const [day, ...meals] = dayPlan.split("\n");
+        return { day: day.trim(), meals: meals };
+      });
+
+      setMealPlans(formattedPlans);
+      setIngredients("");
+      setError("");
+    } catch (err) {
+      setError("An error occurred while processing your request");
+      console.error(err);
     }
   };
 
-  // Assume this effect is used to fetch the meal plan on component mount
-  useEffect(() => {
-    handleGenerateMealPlan();
-  }, []);
-
   return (
     <div className="meal-plan-container">
-      {mealPlans.map((plan, index) => (
-        <div key={index} className={`meal-plan-card ${plan.day.toLowerCase()}`}>
-          <h2>{plan.day}</h2>
-          <p>
-            <strong>Breakfast:</strong> {plan.breakfast}
-          </p>
-          <p>
-            <strong>Lunch:</strong> {plan.lunch}
-          </p>
-          <p>
-            <strong>Dinner:</strong> {plan.dinner}
-          </p>
-        </div>
-      ))}
+      <h1 className="title">Weekly Meal Planner</h1>
+      <div className="input-group">
+        <input
+          type="text"
+          value={ingredients}
+          onChange={(e) => setIngredients(e.target.value)}
+          placeholder="Enter ingredients separated by commas"
+        />
+        <button onClick={handleGenerateMealPlan}>Generate Meal Plan</button>
+      </div>
+      {error && <div className="error-message">{error}</div>}
+      <div className="meal-plans-display">
+        {mealPlans.map((plan, index) => (
+          <div key={index} className="meal-plan-card">
+            <h2>{plan.day}</h2>
+            {plan.meals.map((meal, mealIndex) => (
+              <p key={mealIndex}>{meal}</p>
+            ))}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

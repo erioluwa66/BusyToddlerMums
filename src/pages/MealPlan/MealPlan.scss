@@ -3,75 +3,61 @@
 @use "../../styles//partials/global" as *;
 @use "../../styles//partials/fonts" as *;
 
+// MealPlan.scss
 .meal-plan-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px;
-}
+    max-width: 600px;
+    margin: 40px auto;
 
-.meal-plan-card {
-    background-color: #f0f0f0; // default color
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-
-    h2 {
-        margin-top: 0;
-        background-color: #f9c1b1; // Default color for headers
-        color: #fff;
-        padding: 10px;
-        border-radius: 10px 10px 0 0;
+    .title {
+        color: #333;
+        margin-bottom: 30px;
     }
 
-    p {
-        background-color: #fff;
-        margin: 10px 0;
-        padding: 10px;
-        border-radius: 5px;
-    }
+    .input-group {
+        display: flex;
+        margin-bottom: 20px;
 
-    &.monday {
-        h2 {
-            background-color: #f9c1b1;
+        input {
+            flex-grow: 1;
+            border: 1px solid #ccc;
+            padding: 10px 15px;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+
+        button {
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: darken(#5cb85c, 10%);
+            }
         }
     }
 
-    &.tuesday {
-        h2 {
-            background-color: #f3d250;
-        }
+    .error-message {
+        color: #d9534f;
+        margin-bottom: 20px;
     }
 
-    &.wednesday {
-        h2 {
-            background-color: #88d498;
+    .meal-plans-display {
+        .meal-plan-card {
+            background-color: #f8f9fa;
+            border-left: 5px solid #5cb85c;
+            padding: 15px;
+            margin-bottom: 10px;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
         }
     }
-
-    &.thursday {
-        h2 {
-            background-color: #8ad7f1;
-        }
-    }
-
-    &.friday {
-        h2 {
-            background-color: #c084f5;
-        }
-    }
-
-    &.saturday {
-        h2 {
-            background-color: #ff847c;
-        }
-    }
-
-    &.sunday {
-        h2 {
-            background-color: #e84a5f;
-        }
-    }
-
- 
 }
