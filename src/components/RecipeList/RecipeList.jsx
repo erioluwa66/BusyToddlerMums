@@ -62,7 +62,7 @@ function RecipeList() {
     <div className="content-container">
       <div className="filters">
         {/* Courses */}
-        <h2>Courses</h2>
+        <h3>Courses</h3>
         <ul>
           {courses.map((course, index) => (
             <li key={index}>
@@ -78,7 +78,7 @@ function RecipeList() {
           ))}
         </ul>
         {/* Cuisines */}
-        <h2>Cuisines</h2>
+        <h3>Cuisines</h3>
         <ul>
           {cuisines.map((cuisine, index) => (
             <li key={index}>

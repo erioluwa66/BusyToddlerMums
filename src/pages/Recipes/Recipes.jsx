@@ -5,8 +5,8 @@ import RecipeList from "../../components/RecipeList/RecipeList";
 function Recipes() {
  
   return (
-    <div>
-      <h1>Recipes</h1>
+    <div className="all-recipe">
+      <h2>Recipes</h2>
         <RecipeList />
     </div>
   );
