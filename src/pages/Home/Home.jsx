@@ -2,8 +2,6 @@ import heroIllustration from "../../assets/icons/Hero_Illustration.svg";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-// import bluecupcake from "../../assets/icons/Frame_blue.svg";
-// import pinkcupcake from "../../assets/icons/Frame_pink.svg";
 import { Link } from "react-router-dom";
 import "./Home.scss";
 
@@ -33,7 +31,6 @@ function Home() {
 
   return (
     <div className="hero">
-      {/* <img className="hero_icon pink" src={pinkcupcake} alt="Pink Cupcake" /> */}
       <div className="hero__top">
         <div className="hero__top--left">
           <h1 className="hero__main-text">
@@ -41,13 +38,13 @@ function Home() {
             <span className="hero__main-text--two">Toddler Mum</span>
           </h1>
           <p className="hero__main-text--sub">
-            Mia, a whirlwind mom juggling work and rambunctious twins, dreaded
-            mealtimes. BusyToddlerMum, a web app became her hero. This app
-            offered delicious, toddler-approved recipes, a magic filter to find
-            meals based on what's already in the fridge, and personalized meal
-            plans for stress-free prep. With BusyToddlerMum, Mia saved time,
-            enjoyed cooking again, and created happy mealtime memories with her
-            family. Let BusyToddlerMum be your hero too!
+            "Discover the joy of stress-free meal planning with BusyToddlerMum.
+            Our app offers quick, nutritious recipes tailored for busy parents
+            like you. With our 'Fridge to Table' feature, you'll whip up
+            delicious meals using what you already have. Say goodbye to mealtime
+            struggles and hello to more family moments, all while keeping your
+            little ones happy and healthy. Embrace easier mealtimes with
+            BusyToddlerMum."
           </p>
           <Link to="/recipes">
             <button className="hero__btn">Get a Recipe</button>
@@ -84,7 +81,7 @@ function Home() {
           </div>
         )}
       </div>
-      {/* <img className="hero_icon blue" src={bluecupcake} alt="Blue Cupcake" /> */}
+      
     </div>
   );
 }
