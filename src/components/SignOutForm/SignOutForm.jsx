@@ -1,6 +1,6 @@
 import { signOut, getAuth } from "firebase/auth";
 
-const Home = () => {
+const SignOutForm = () => {
   // Instantiate the auth service SDK
   const auth = getAuth();
 
@@ -12,4 +12,4 @@ const Home = () => {
     </section>
   );
 };
-export default Home;
+export default SignOutForm;
