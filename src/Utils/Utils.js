@@ -1,6 +1,6 @@
 // utils.js
 
-// This is a very naive implementation and needs to be expanded to handle different cases.
+// Convert a decimal to a fraction string
 export const convertToFraction = (decimal) => {
   if (decimal === parseInt(decimal, 10)) {
     return String(decimal); // for whole numbers
@@ -15,8 +15,9 @@ export const convertToFraction = (decimal) => {
   return Math.floor(numerator) + "/" + Math.floor(denominator);
 };
 
+// Scale a quantity by a given factor
 export const scaleQuantity = (quantity, scale) => {
-  // Parse the quantity to extract numbers and apply scaling.
-  // You would need a more complex function to handle units and mixed numbers.
+  // Parse the quantity to extract numbers and apply scaling
+  // You would need a more complex function to handle units and mixed numbers
   return parseFloat(quantity) * scale;
 };

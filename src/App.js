@@ -6,7 +6,7 @@ import MealPlan from "./pages/MealPlan/MealPlan.jsx";
 import Recipes from "./pages/Recipes/Recipes.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import RecipeDetails from "./components/RecipeDetails/RecipeDetails.jsx";
-import PasswordSignIn from "./components/PasswordSignIn"; // Adjust the path as necessary
+import PasswordSignIn from "./components/PasswordSignIn/PasswordSignIn.jsx";
 import SignOutForm from "./components/SignOutForm/SignOutForm.jsx";
 import { AuthProvider } from "./contexts/AuthContext"; // Adjust the path as necessary
 
