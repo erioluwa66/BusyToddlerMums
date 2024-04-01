@@ -1,62 +1,74 @@
-# Project Title
-BusyToddlerMum
+# BusyToddlerMum
+![BusyToddlerMum]
+
+A capstone project from [BrainStation's](https://brainstation.io/) Software Engineering April 2024 bootcamp cohort. The backend server can be found [here](https://github.com/erioluwa66/BusyToddlerMumApi).
+
+
+## APP Preview
+<img src="./public/images/app_preview.png" alt="BusyToddlerMum app preview">
 
 ## Overview
-The BusyToddlerMum app aims to assist super busy moms in delivering nutritious food to their babies. It provides a convenient solution for managing baby feeding schedules, meal planning, and nutritional information.
+BusyToddlerMum is a comprehensive solution for parents seeking to simplify and enrich the meal planning process for their toddlers. This platform serves as a culinary companion, helping to foster healthy eating habits with a user-friendly interface.
 
 
 
 ### Problem
 
-Super busy moms often struggle to find time to prepare and deliver nutritious meals to their toddlers. Ensuring that toddlers receive balanced and healthy meals is crucial for their growth and development. Juggling work, household chores, and parenting leaves little time for meal planning and preparation.
+Parents often face the challenge of finding the time to plan, prepare, and diversify meals for their toddlers. BusyToddlerMum addresses this by providing easy-to-follow recipes, meal scaling for various serving sizes, and a platform to manage weekly meal plans effectively
 
 ### User Profile
-Super Busy Moms: Moms with hectic schedules who need assistance in managing their toddlers’ meals. Additionally, any child caregiver who cares about providing nutritious meals for the welfare of their child will find this application useful.
+BusyToddlerMum is designed for the proactive parent who values nutritious meals and seeks convenience in meal planning. The platform is also an excellent resource for caretakers or educators who wish to explore a variety of meal options for children.
 
 ### Features
+- **Recipe Discovery**: Search for toddler-approved recipes using simple ingredients.
+- **Meal Planning**: Easily plan your week with customized meal schedules.
+- **Nutritional Insights**: Access detailed nutritional information for each recipe to ensure a balanced diet for your toddler.
 
-Customized Meal Planning: Moms can create weekly meal plans, considering their toddlers’ preferences and nutritional needs.
-Nutritional Insights: The app provides information on essential nutrients and age-appropriate foods, utilizing AI to suggest meal types and combinations based on dietary requirements, allergens, and available ingredients.
+
 Shopping Requirements/Pantry Organizer: Users can track their pantry inventory and generate shopping lists based on meal plans and current pantry stock.
 
 ## Implementation
 
 ### Tech Stack
-
-Frontend: React.js
-Backend: Node.js with Express
-Database: MySQL
-Deployment: Terraform, AWS (S3, Route 53, and Cloudfront)
+- React.js
+- Express.js
+  - Knex
+  - cors
+- Node.js
+- MySQL
 
 ### APIs
 
-Nutrition API: Integrating with Spoonacular or similar services for nutritional data.
-Pantry API: Potential integration with Instacart or similar services for shopping 
+OpenAi API 
 
 ### Sitemap
 
-Home: Overview and login
+Home: Overview 
+Custom Recipes
 Meal Planner: Create and manage meal plans
-Pantry Restock: Manage pantry inventory and generate shopping lists
-Favorites: Save favorite recipes
-Profile: User settings and preferences
+
 ### Mockups
 
-Provide visuals of your app's screens. You can use tools like Figma or pictures of hand-drawn sketches.
+<img src="./public/images/figmahome.png" alt="app wireframes"/>
+<img src="./public/images/wireframe.png" alt="app wireframes"/>
 
 ### Data
 
-The application will store data related to user profiles, meal plans, pantry inventory, and favorite recipes. These will be relational in nature, with connections between users and their respective data sets.
 
 ### Endpoints
+This app's API server has the following list of endpoints:
 
-//api/meal-plans:
-GET: Retrieve meal plans
-POST: Create new meal plans
-PUT: Update existing meal plans
-/api/user-profile:
-GET: Retrieve user profile information
-PUT: Update user profile settings
+- `GET /api/recipes`: Retrieve all recipes
+- `GET /api/recipes/:id`: Retrieve a recipe by ID
+- `POST /api/meal-plan`: Retrieve a meal type
+
+- RESPONSES: 
+  - 200 success for all GET  requests
+  - 201 created new content for POST requests
+  - 404 not found
+  - 401 unauthorized; display if user tries to access user page without logging in
+  - 400 bad request
+  - 500 internal server error
 
 ### Auth
 
@@ -67,26 +79,32 @@ The authentication mechanism for the application is yet to be decided. Options i
 Sprint 1
 Set up basic project structure (frontend and backend)
 Create database schema
-Implement basic CRUD operations for user profiles and meal plans
+Implement basic CRUD operations for recipes and meal plans
 
 Sprint 2
-Integrate nutrition API for providing meal suggestions and nutritional insights
-Develop frontend components for meal planning and pantry organization
-
-Sprint 3
-Implement shopping requirement feature, integrating with external shopping APIs if necessary
-Add user authentication functionality
-
-Sprint 4
-Finalize UI/UX design and polish frontend components
-Conduct thorough testing and bug fixing
-
-Sprint 5 (Nice-to-haves)
-Implement additional features such as user authentication, integration with Instacart for shopping, and any other desired enhancements.
+Integrate openAI API for providing meal suggestions and nutritional insights
+Develop frontend components for recipe and meal planning.
 
 ## Nice-to-haves
 
 Authentication: Implement robust user authentication mechanisms to ensure data security.
 Integration with External Services: Integrate with Instacart or similar services for seamless shopping experience.
 Enhanced Meal Planning Features: Implement features like recipe suggestions, meal prep tips, and nutritional tracking for advanced meal planning capabilities.
+Pantry Restock: Manage pantry inventory and generate shopping lists
+Favorites: Save favorite recipes
+Profile: User settings and preferences
 
+## Setup
+Requirements for before running the client side application:
+1) Follow the instructions to setup the [backend API server](https://github.com/erioluwa66/BusyToddlerMumApi).
+
+2) Install nodeJS dependencies
+    ```
+    npm i
+    ```
+3) Create a .env file with variables from the sample file .env.sample
+
+4) Start the react App
+    ```
+    npm start
+    ```
