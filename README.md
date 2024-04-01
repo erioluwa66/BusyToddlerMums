@@ -1,5 +1,5 @@
 # BusyToddlerMum
-![BusyToddlerMum]
+
 
 A capstone project from [BrainStation's](https://brainstation.io/) Software Engineering April 2024 bootcamp cohort. The backend server can be found [here](https://github.com/erioluwa66/BusyToddlerMumApi).
 
@@ -20,8 +20,8 @@ Parents often face the challenge of finding the time to plan, prepare, and diver
 BusyToddlerMum is designed for the proactive parent who values nutritious meals and seeks convenience in meal planning. The platform is also an excellent resource for caretakers or educators who wish to explore a variety of meal options for children.
 
 ### Features
-- **Recipe Discovery**: Search for toddler-approved recipes using simple ingredients.
-- **Meal Planning**: Easily plan your week with customized meal schedules.
+- **Recipe Discovery**: Search for toddler-approved recipes using the filter function to check by course or cuisine.
+- **Meal Planning**: Easily plan your week with customized meal schedules using Openai chat assitance.
 - **Nutritional Insights**: Access detailed nutritional information for each recipe to ensure a balanced diet for your toddler.
 
 
@@ -60,7 +60,7 @@ This app's API server has the following list of endpoints:
 
 - `GET /api/recipes`: Retrieve all recipes
 - `GET /api/recipes/:id`: Retrieve a recipe by ID
-- `POST /api/meal-plan`: Retrieve a meal type
+- `POST /api/meal-plan`: Retrieve a week mealprep
 
 - RESPONSES: 
   - 200 success for all GET  requests
