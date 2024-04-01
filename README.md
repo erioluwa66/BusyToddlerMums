@@ -24,9 +24,6 @@ BusyToddlerMum is designed for the proactive parent who values nutritious meals 
 - **Meal Planning**: Easily plan your week with customized meal schedules using Openai chat assitance.
 - **Nutritional Insights**: Access detailed nutritional information for each recipe to ensure a balanced diet for your toddler.
 
-
-Shopping Requirements/Pantry Organizer: Users can track their pantry inventory and generate shopping lists based on meal plans and current pantry stock.
-
 ## Implementation
 
 ### Tech Stack
@@ -93,6 +90,7 @@ Enhanced Meal Planning Features: Implement features like recipe suggestions, mea
 Pantry Restock: Manage pantry inventory and generate shopping lists
 Favorites: Save favorite recipes
 Profile: User settings and preferences
+Shopping Requirements/Pantry Organizer: Users can track their pantry inventory and generate shopping lists based on meal plans and current pantry stock.
 
 ## Setup
 Requirements for before running the client side application:
