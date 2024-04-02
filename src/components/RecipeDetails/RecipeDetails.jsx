@@ -1,38 +1,44 @@
-// components/RecipeDetails.js
-import "./RecipeDetails.scss"
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { convertToFraction, scaleQuantity } from '../../Utils/Utils' // Assume you have
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { scaleQuantity } from "../../Utils/Utils";
+import "./RecipeDetails.scss";
 
 function RecipeDetails() {
-  const params = useParams();
+  const { id } = useParams();
+  const navigate = useNavigate();
   const [recipe, setRecipe] = useState(null);
   const [loading, setLoading] = useState(true);
   const [scale, setScale] = useState(1); // The scale factor
   const baseUrl = "http://localhost:5050";
+  const currentId = Number(id);
 
   useEffect(() => {
-    const fetchRecipebyId = async () => {
+    const fetchRecipeById = async () => {
       try {
-        const response = await axios.get(
-          `${baseUrl}/api/recipes/${Number(params.id)}`
-        );
-        document.title = `${response.data.recipe_name} | busytoddlermum`;
+        const response = await axios.get(`${baseUrl}/api/recipes/${currentId}`);
+        document.title = `${response.data.recipe_name} | BusyToddlerMum`;
         setRecipe(response.data);
         setLoading(false);
       } catch (error) {
+        console.error(`Error: ${error}`);
         setLoading(false);
-        console.error(`error: ${error}`);
       }
     };
 
-    fetchRecipebyId();
-  }, [params.id]);
+    fetchRecipeById();
+  }, [currentId, baseUrl]);
 
-  
-  const scaleRecipe = (factor) => {
-    setScale(factor);
+  // Navigate to the previous recipe
+  const goToPrevRecipe = () => {
+    if (currentId > 1) {
+      navigate(`/recipes/${currentId - 1}`);
+    }
+  };
+
+  // Navigate to the next recipe
+  const goToNextRecipe = () => {
+    navigate(`/recipes/${currentId + 1}`);
   };
 
   if (loading) {
@@ -40,6 +46,12 @@ function RecipeDetails() {
   }
   return (
     <div className="recipe-details">
+      <div className="navigation-buttons">
+        <button onClick={goToPrevRecipe} disabled={currentId <= 1}>
+          Previous Recipe
+        </button>
+        <button onClick={goToNextRecipe}>Next Recipe</button>
+      </div>
       <img src={recipe.image} alt={recipe.recipe_name} />
       <h2>{recipe.recipe_name}</h2>
       <p>Description: {recipe.description}</p>
@@ -47,31 +59,18 @@ function RecipeDetails() {
       <p>Cuisine: {recipe.cuisine}</p>
       <p>Servings: {recipe.servings}</p>
       <div className="scale-buttons">
-        <button
-          onClick={() => scaleRecipe(1)}
-          className={scale === 1 ? "active" : ""}
-        >
-          1x
-        </button>
-        <button
-          onClick={() => scaleRecipe(1.5)}
-          className={scale === 1.5 ? "active" : ""}
-        >
-          2x
-        </button>
-        <button
-          onClick={() => scaleRecipe(3)}
-          className={scale === 3 ? "active" : ""}
-        >
-          3x
-        </button>
+        Scale:
+        <button onClick={() => setScale(1)}>1x</button>
+        <button onClick={() => setScale(2)}>2x</button>
+        <button onClick={() => setScale(3)}>3x</button>
       </div>
+
       <h3>Ingredients:</h3>
+
       <ul>
         {recipe.ingredients.map((ingredient, index) => (
           <li key={index}>
-            {convertToFraction(scaleQuantity(ingredient.quantity, scale))}{" "}
-            {ingredient.ingredient}
+            {scaleQuantity(ingredient.quantity, scale)} {ingredient.ingredient}
           </li>
         ))}
       </ul>
@@ -90,6 +89,6 @@ function RecipeDetails() {
       </p>
     </div>
   );
-};
+}
 
 export default RecipeDetails;
