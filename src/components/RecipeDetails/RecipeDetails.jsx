@@ -11,7 +11,7 @@ function RecipeDetails() {
   const [loading, setLoading] = useState(true);
   const [scale, setScale] = useState(1); // The scale factor
   const baseUrl = "http://localhost:5050";
-  const [currentId, setCurrentId] = useState(Number(id)); // Keep track of the current recipe ID
+  const currentId = Number(id);
 
   useEffect(() => {
     const fetchRecipeById = async () => {
@@ -32,13 +32,13 @@ function RecipeDetails() {
   // Navigate to the previous recipe
   const goToPrevRecipe = () => {
     if (currentId > 1) {
-      setCurrentId(currentId - 1); // Assuming 1 is the first ID
+      navigate(`/recipes/${currentId - 1}`);
     }
   };
 
   // Navigate to the next recipe
   const goToNextRecipe = () => {
-    setCurrentId(currentId + 1);
+    navigate(`/recipes/${currentId + 1}`);
   };
 
   if (loading) {
