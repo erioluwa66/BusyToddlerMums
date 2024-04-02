@@ -5,7 +5,7 @@
 
 .recipe-details {
     max-width: 800px;
-    margin: 40px auto;
+    margin: 20px auto;
     padding: 20px;
     background: #fdfdfd;
     border-radius: 10px;
@@ -16,7 +16,7 @@
         width: 100%;
         height: auto;
         border-radius: 10px;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
     }
 
     h2 {
@@ -69,30 +69,6 @@
         color: #007bff;
     }
 
-    .rating {
-        display: flex;
-        align-items: center;
-
-
-        .votes {
-            margin-left: 10px;
-            font-size: 0.8rem;
-            color: #999;
-        }
-    }
-
-    .prep-time,
-    .cook-time,
-    .total-time {
-        background: #007bff;
-        color: #fff;
-        padding: 10px;
-        border-radius: 5px;
-        display: inline-block;
-        margin-right: 10px;
-        margin-top: 10px;
-    }
-
     .servings {
         display: inline-block;
         font-weight: bold;
@@ -118,6 +94,30 @@
             }
         }
     }
+    .navigation-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+    
+        button {
+            background: $maintext;
+            color: $white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+    
+            &:hover {
+               background-color: darken($maintext, 10%);
+            }
+    
+             &:disabled {
+                cursor: not-allowed;
+                opacity: 0.5;
+            }
+        }
+     }
 
     .scale-buttons {
         display: flex;
@@ -140,7 +140,7 @@
             background-color: #007bff;
             color: white;
             border-color: #007bff;
-      }
+        }
     }
-}
+    }
 }
