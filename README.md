@@ -39,7 +39,15 @@ Shopping Requirements/Pantry Organizer: Users can track their pantry inventory a
 
 ### APIs
 
-OpenAi API 
+OpenAi API
+
+## Docker Container Setup
+
+### Building and Running with Docker
+
+1. **Build the Docker image:**
+  ```bash
+  docker build -t busytoddlermumclient .
 
 ### Sitemap
 
@@ -100,7 +108,7 @@ Requirements for before running the client side application:
 
 2) Install nodeJS dependencies
     ```
-    npm i
+    npm install
     ```
 3) Create a .env file with variables from the sample file .env.sample
 
