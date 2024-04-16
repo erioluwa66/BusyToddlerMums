@@ -46,8 +46,13 @@ OpenAi API
 ### Building and Running with Docker
 
 1. **Build the Docker image:**
-  ```bash
-  docker build -t busytoddlermumclient .
+   `    docker build -t busytoddlermumclient .
+   `
+    <br>
+2. **Ensure Docker Desktop is running and then execute:**
+   `    docker build -t busytoddlermumclient .
+   `
+    <br>
 
 ### Sitemap
 
