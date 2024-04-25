@@ -29,6 +29,9 @@ jobs:
     - name: Login to Amazon ECR
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
+      with:
+        registries: ${{ secrets.AWS_ACCOUNT_ID }}
+        mask-password: true
 
     - name: Build and Push Docker Image
       run: |
