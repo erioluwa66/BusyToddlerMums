@@ -1,30 +1,39 @@
-name: Build and Push Docker image to ECR
+name: Build and Push Frontend Docker Image to AWS ECR
 
 on:
   push:
     branches:
-      - main
       - develop
+    paths:
+      - '**'
 
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
+
     permissions:
-      contents: read
       id-token: write
+      contents: read
 
     steps:
-    - name: Checkout code
+    - name: Checkout Code
       uses: actions/checkout@v3
 
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v2
       with:
         aws-region: ${{ secrets.AWS_REGION }}
-        role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/github-actions-role
-        role-session-name: GitHubActions
+        role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
+        role-session-name: GitHubActionsSession
 
-    - name: Build and Push Docker image
+    - name: Login to Amazon ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v1
+
+    - name: Build and Push Docker Image
       run: |
-        docker build -t ${{ secrets.ECR_REPOSITORY_URL }}:${{ github.sha }} .
-        docker push ${{ secrets.ECR_REPOSITORY_URL }}:${{ github.sha }}
+        docker build -t ${{ steps.login-ecr.outputs.registry }}/frontend:${{ github.sha }} -f Dockerfile .
+        docker push ${{ steps.login-ecr.outputs.registry }}/frontend:${{ github.sha }}
+      env:
+        AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
+        AWS_REGION: ${{ secrets.AWS_REGION }}
