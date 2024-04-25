@@ -1,0 +1,30 @@
+name: Build and Push Docker image to ECR
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        aws-region: ${{ secrets.AWS_REGION }}
+        role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/github-actions-role
+        role-session-name: GitHubActions
+
+    - name: Build and Push Docker image
+      run: |
+        docker build -t ${{ secrets.ECR_REPOSITORY_URL }}:${{ github.sha }} .
+        docker push ${{ secrets.ECR_REPOSITORY_URL }}:${{ github.sha }}
