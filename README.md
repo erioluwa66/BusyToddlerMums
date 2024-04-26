@@ -54,8 +54,7 @@ This frontend is containerized and ready for deployment using Docker. It is auto
    `
     <br>
 2. **Ensure Docker Desktop is running and then execute:**
-   `    docker build -t busytoddlermumclient .
-   `
+  
     <br>
      `    docker run -p 80:80 busytoddlermumfrontend
    `
