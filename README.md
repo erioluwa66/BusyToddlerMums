@@ -43,6 +43,10 @@ OpenAi API
 
 ## Docker Container Setup
 
+### Deployment
+This frontend is containerized and ready for deployment using Docker. It is automatically built and pushed to AWS ECR using GitHub Actions.
+
+
 ### Building and Running with Docker
 
 1. **Build the Docker image:**
@@ -53,6 +57,12 @@ OpenAi API
    `    docker build -t busytoddlermumclient .
    `
     <br>
+     `    docker run -p 80:80 busytoddlermumfrontend
+   `
+    <br>
+### Continuous Integration and Deployment
+- The GitHub Actions workflow automates the testing, building, and deployment to AWS ECR. The ECR image can be deployed to a service like AWS ECS for production environments.
+
 
 ### Sitemap
 
