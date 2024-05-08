@@ -1,7 +1,7 @@
 # BusyToddlerMum
 
 
-A capstone project from [BrainStation's](https://brainstation.io/) Software Engineering April 2024 bootcamp cohort. The backend server can be found [here](https://github.com/erioluwa66/BusyToddlerMumApi).
+A capstone project from [BrainStation's](https://brainstation.io/) Software Engineering bootcamp. The backend server can be found [here](https://github.com/erioluwa66/BusyToddlerMumApi).
 
 
 ## APP Preview
